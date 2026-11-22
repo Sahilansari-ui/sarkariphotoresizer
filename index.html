@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sarkari Form Photo & Signature Resizer (20KB - 50KB) Free</title>
+  <meta name="description" content="SSC, Railway, UPSC, Police aur sabhi Sarkari Form ke liye Photo (20KB-50KB) aur Signature (10KB-20KB) 2 second mein free resize karein." />
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #1e40af;
+      --success: #16a34a;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #fff;
+      text-align: center;
+      padding: 20px 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+    header p { font-size: 0.88rem; opacity: 0.92; }
+
+    .container {
+      max-width: 540px;
+      margin: 16px auto;
+      padding: 0 14px;
+    }
+
+    .ad-slot {
+      background: #e2e8f0;
+      border: 1px dashed #94a3b8;
+      color: #475569;
+      text-align: center;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .presets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .preset-btn {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .preset-btn strong { display: block; font-size: 0.85rem; color: var(--text); }
+    .preset-btn span { font-size: 0.74rem; color: var(--muted); }
+
+    .preset-btn.active {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .preset-btn.active strong { color: var(--primary); }
+
+    .upload-box {
+      border: 2px dashed #93c5fd;
+      background: #eff6ff;
+      border-radius: 12px;
+      padding: 24px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .upload-box:hover { background: #dbeafe; }
+    .upload-box p { font-weight: 600; color: var(--primary); font-size: 0.95rem; }
+    .upload-box small { color: var(--muted); font-size: 0.78rem; display: block; margin-top: 4px; }
+
+    input[type="file"] { display: none; }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .field input:focus { border-color: var(--primary); }
+
+    .btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-primary:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    .btn-success { background: var(--success); color: #fff; margin-top: 10px; text-decoration: none; display: block; text-align: center; }
+    .btn-whatsapp { background: #25D366; color: #fff; margin-top: 10px; font-size: 0.92rem; }
+
+    .result-box {
+      display: none;
+      text-align: center;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .preview-img {
+      max-width: 100%;
+      max-height: 220px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 10px auto;
+      display: block;
+      background: #fff;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px 0;
+      font-size: 0.84rem;
+    }
+
+    .stats div strong { display: block; font-size: 0.95rem; }
+    .badge-ok { color: var(--success); }
+
+    .trust-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .faq { font-size: 0.84rem; color: #334155; }
+    .faq h3 { font-size: 0.92rem; margin: 10px 0 4px; color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sarkari Form Photo & Sign Resizer</h1>
+    <p>SSC, Railway, Police, UPSC — 2 Second Mein 20KB-50KB Banayein (100% Free)</p>
+  </header>
+
+  <div class="container">
+
+    <!-- TOP AD SLOT (Baad mein AdSense / Adsterra code yahan paste karna) -->
+    <div class="ad-slot">
+      Advertisement Space (Top Banner)
+    </div>
+
+    <div class="card">
+      <div class="section-title">1. Apna Exam / Type Chunein:</div>
+      <div class="presets">
+        <div class="preset-btn active" onclick="setPreset(this, 350, 450, 40)">
+          <strong>SSC / Sarkari Photo</strong>
+          <span>20KB - 50KB (350×450)</span>
+        </div>
+        <div class="preset-btn" onclick="setPreset(this, 400, 200, 15)">
+          <strong>Sarkari Signature</strong>
+          <span>10KB - 20KB (400×200)</span>
+        </div>
+        <div class="preset-btn" onclick="setPreset(this, 213, 213, 45)">
+          <strong>PAN Card Photo</strong>
+          <span>Under 50KB (213×213)</span>
+        </div>
+        <div class="preset-btn" onclick="setPreset(this, 600, 600, 100)">
+          <strong>Custom / Document</strong>
+          <span>Apne Hisab Se Set Karein</span>
+        </div>
+      </div>
+
+      <div class="section-title">2. Photo ya Signature Upload Karein:</div>
+      <label class="upload-box" for="fileInput" id="dropZone">
+        <p id="uploadText">📁 Photo Select Karne Ke Liye Click Karein</p>
+        <small>JPG, PNG, WEBP supported • Photo aapke phone mein hi process hogi</small>
+        <input type="file" id="fileInput" accept="image/*" />
+      </label>
+
+      <div class="controls">
+        <div class="field">
+          <label>Target Size (KB)</label>
+          <input type="number" id="targetKB" value="40" min="5" max="2000" />
+        </div>
+        <div class="field">
+          <label>Width (px)</label>
+          <input type="number" id="imgWidth" value="350" min="50" max="3000" />
+        </div>
+        <div class="field">
+          <label>Height (px)</label>
+          <input type="number" id="imgHeight" value="450" min="50" max="3000" />
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="resizeBtn" disabled onclick="processImage()">
+        ⚡ Resize & Compress Karein
+      </button>
+
+      <div class="result-box" id="resultBox">
+        <div class="section-title">✅ Aapki Photo Ready Hai!</div>
+        <img id="previewImg" class="preview-img" alt="Resized Preview" />
+        <div class="stats">
+          <div>Original Size <strong id="origSize">-</strong></div>
+          <div>New Size <strong id="newSize" class="badge-ok">-</strong></div>
+          <div>Dimensions <strong id="newDim">-</strong></div>
+        </div>
+        <a id="downloadBtn" class="btn btn-success" download="sarkari-resized.jpg">
+          ⬇️ Download Photo (JPG)
+        </a>
+        <button class="btn btn-whatsapp" onclick="shareWhatsApp()">
+          📲 Doston Ko WhatsApp Par Share Karein
+        </button>
+      </div>
+
+      <p class="trust-note">🔒 100% Safe: Aapki photo kisi server par upload nahi hoti.</p>
+    </div>
+
+    <!-- BOTTOM AD SLOT -->
+    <div class="ad-slot">
+      Advertisement Space (Bottom Banner)
+    </div>
+
+    <div class="card faq">
+      <div class="section-title">Sarkari Form Photo Size Guide</div>
+      <h3>• SSC CGL / CHSL / GD / MTS:</h3>
+      <p>Photo size 20KB se 50KB (3.5cm × 4.5cm) aur Signature 10KB se 20KB hona chahiye.</p>
+      <h3>• Railway (RRB) & Police Bharti:</h3>
+      <p>Aam taur par Photo 20KB–50KB aur Signature 10KB–40KB JPG format mein maanga jata hai.</p>
+    </div>
+
+  </div>
+
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <script>
+    let originalFile = null;
+    let originalImage = new Image();
+
+    const fileInput = document.getElementById('fileInput');
+    const uploadText = document.getElementById('uploadText');
+    const resizeBtn = document.getElementById('resizeBtn');
+    const resultBox = document.getElementById('resultBox');
+
+    function setPreset(el, w, h, kb) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('imgWidth').value = w;
+      document.getElementById('imgHeight').value = h;
+      document.getElementById('targetKB').value = kb;
+    }
+
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      originalFile = file;
+      uploadText.textContent = "✅ Selected: " + file.name;
+
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        originalImage = new Image();
+        originalImage.onload = function() {
+          resizeBtn.disabled = false;
+          resultBox.style.display = 'none';
+        };
+        originalImage.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function dataURLSizeKB(dataURL) {
+      const base64Length = dataURL.length - (dataURL.indexOf(',') + 1);
+      const bytes = (base64Length * 3) / 4;
+      return bytes / 1024;
+    }
+
+    function processImage() {
+      if (!originalImage.src) return;
+
+      const targetKB = parseFloat(document.getElementById('targetKB').value) || 40;
+      let width = parseInt(document.getElementById('imgWidth').value) || 350;
+      let height = parseInt(document.getElementById('imgHeight').value) || 450;
+
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      let bestDataUrl = '';
+      let scale = 1.0;
+
+      // Try hitting exact target KB using binary search on JPEG quality
+      for (let attempt = 0; attempt < 5; attempt++) {
+        canvas.width = Math.round(width * scale);
+        canvas.height = Math.round(height * scale);
+
+        // White background so transparent PNG signatures don't turn black
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+        let minQ = 0.05, maxQ = 0.98;
+        bestDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+
+        for (let i = 0; i < 10; i++) {
+          let midQ = (minQ + maxQ) / 2;
+          let testUrl = canvas.toDataURL('image/jpeg', midQ);
+          let sizeKB = dataURLSizeKB(testUrl);
+
+          if (sizeKB <= targetKB) {
+            bestDataUrl = testUrl;
+            minQ = midQ;
+          } else {
+            maxQ = midQ;
+          }
+        }
+
+        if (dataURLSizeKB(bestDataUrl) <= targetKB) break;
+        scale *= 0.85; // Reduce dimensions slightly if still above target KB
+      }
+
+      const finalKB = dataURLSizeKB(bestDataUrl).toFixed(1);
+      const origKB = (originalFile.size / 1024).toFixed(1);
+
+      document.getElementById('previewImg').src = bestDataUrl;
+      document.getElementById('origSize').textContent = origKB + ' KB';
+      document.getElementById('newSize').textContent = finalKB + ' KB';
+      document.getElementById('newDim').textContent = canvas.width + '×' + canvas.height;
+
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.href = bestDataUrl;
+      downloadBtn.download = 'sarkari-' + Math.round(finalKB) + 'kb.jpg';
+
+      resultBox.style.display = 'block';
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function shareWhatsApp() {
+      const url = window.location.href;
+      const text = `Sarkari Form (SSC/Railway/Police) ke liye Photo 20KB-50KB aur Signature 2 second mein FREE resize karo yahan se: ${url}`;
+      window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    }
+  </script>
+</body>
+</html>
