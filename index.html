@@ -3,242 +3,507 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sarkari Form Photo & Signature Resizer (20KB - 50KB) Free</title>
-  <meta name="description" content="SSC, Railway, UPSC, Police aur sabhi Sarkari Form ke liye Photo (20KB-50KB) aur Signature (10KB-20KB) 2 second mein free resize karein." />
+  <title>FormSize Pro — Free Sarkari Form Photo, Signature & Date Resizer (20KB-50KB)</title>
+  <meta name="description" content="SSC, Railway, UPSC, Police aur sabhi Sarkari Forms ke liye Photo (20KB-50KB), Signature (10KB-20KB) aur Photo par Name & Date 2 second mein FREE banayein." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1d4ed8;
-      --primary-dark: #1e40af;
-      --success: #16a34a;
-      --bg: #f1f5f9;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --secondary: #0f172a;
+      --accent: #10b981;
+      --bg: #f8fafc;
       --card: #ffffff;
       --text: #0f172a;
       --muted: #64748b;
       --border: #e2e8f0;
+      --radius: 16px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding-bottom: 40px;
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-
-    header {
-      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
       color: #fff;
-      text-align: center;
-      padding: 20px 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    header h1 { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
-    header p { font-size: 0.88rem; opacity: 0.92; }
-
-    .container {
-      max-width: 540px;
-      margin: 16px auto;
-      padding: 0 14px;
-    }
-
-    .ad-slot {
-      background: #e2e8f0;
-      border: 1px dashed #94a3b8;
-      color: #475569;
-      text-align: center;
-      padding: 14px;
       border-radius: 10px;
-      font-size: 0.8rem;
-      margin-bottom: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
     }
-
-    .card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
+    .brand span { color: var(--primary); }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: 0.2s;
     }
-
-    .section-title {
-      font-size: 0.95rem;
+    .nav-links a:hover { color: var(--primary); }
+    .nav-badge {
+      background: #ecfdf5;
+      color: #059669;
+      padding: 5px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
       font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text);
+      border: 1px solid #a7f3d0;
     }
 
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top center, #eff6ff 0%, #f8fafc 70%);
+      padding: 36px 18px 24px;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.06);
+    }
+    .hero h1 {
+      font-size: clamp(1.65rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--secondary);
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      max-width: 720px;
+      margin: 0 auto 10px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Container */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+    /* Ad Slot */
+    .ad-slot {
+      background: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      color: #94a3b8;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      margin: 16px auto;
+      max-width: 728px;
+    }
+
+    /* Main Tool Card */
+    .tool-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    /* Presets */
     .presets {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
     }
-
     .preset-btn {
       background: #f8fafc;
       border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 8px;
-      text-align: center;
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: left;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease;
     }
-
-    .preset-btn strong { display: block; font-size: 0.85rem; color: var(--text); }
+    .preset-btn:hover { border-color: #93c5fd; transform: translateY(-1px); }
+    .preset-btn strong { display: block; font-size: 0.86rem; color: var(--secondary); margin-bottom: 2px; }
     .preset-btn span { font-size: 0.74rem; color: var(--muted); }
-
     .preset-btn.active {
       border-color: var(--primary);
       background: #eff6ff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
     }
-
     .preset-btn.active strong { color: var(--primary); }
 
+    /* Upload Area */
     .upload-box {
+      display: block;
       border: 2px dashed #93c5fd;
-      background: #eff6ff;
-      border-radius: 12px;
-      padding: 24px 14px;
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+      border-radius: 16px;
+      padding: 32px 16px;
       text-align: center;
       cursor: pointer;
       transition: 0.2s;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
-
-    .upload-box:hover { background: #dbeafe; }
-    .upload-box p { font-weight: 600; color: var(--primary); font-size: 0.95rem; }
-    .upload-box small { color: var(--muted); font-size: 0.78rem; display: block; margin-top: 4px; }
-
+    .upload-box:hover { border-color: var(--primary); background: #dbeafe; }
+    .upload-icon { font-size: 2rem; margin-bottom: 6px; display: block; }
+    .upload-box p { font-weight: 700; color: var(--primary); font-size: 1rem; }
+    .upload-box small { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 4px; }
     input[type="file"] { display: none; }
 
+    /* Controls */
     .controls {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
     }
-
     .field label {
       display: block;
       font-size: 0.76rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
-
     .field input {
       width: 100%;
-      padding: 9px 10px;
+      padding: 10px 12px;
       border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.9rem;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--secondary);
       outline: none;
+      transition: 0.2s;
+    }
+    .field input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+    /* Unique Feature: Name & Date Box */
+    .dop-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 20px;
+    }
+    .dop-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--secondary);
+    }
+    .dop-toggle input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+    .dop-fields {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
     }
 
-    .field input:focus { border-color: var(--primary); }
-
+    /* Buttons */
     .btn {
       width: 100%;
-      padding: 13px;
+      padding: 14px 20px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
     }
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.28);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35); }
+    .btn-primary:disabled { background: #cbd5e1; box-shadow: none; cursor: not-allowed; transform: none; }
 
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .btn-primary:disabled { background: #94a3b8; cursor: not-allowed; }
+    .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .btn-success { background: #10b981; color: #fff; }
+    .btn-success:hover { background: #059669; }
+    .btn-whatsapp { background: #25D366; color: #fff; }
+    .btn-whatsapp:hover { background: #1ebe5d; }
 
-    .btn-success { background: var(--success); color: #fff; margin-top: 10px; text-decoration: none; display: block; text-align: center; }
-    .btn-whatsapp { background: #25D366; color: #fff; margin-top: 10px; font-size: 0.92rem; }
-
+    /* Result Box */
     .result-box {
       display: none;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 2px dashed var(--border);
       text-align: center;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
     }
-
-    .preview-img {
-      max-width: 100%;
-      max-height: 220px;
+    .preview-wrap {
+      background: #f1f5f9;
+      padding: 16px;
+      border-radius: 14px;
+      display: inline-block;
+      margin: 12px 0;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      margin: 10px auto;
-      display: block;
-      background: #fff;
     }
-
+    .preview-img { max-width: 100%; max-height: 240px; border-radius: 6px; display: block; }
     .stats {
-      display: flex;
-      justify-content: space-around;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
       background: #f8fafc;
-      padding: 10px;
-      border-radius: 10px;
-      margin: 10px 0;
-      font-size: 0.84rem;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-top: 8px;
     }
+    .stats div { font-size: 0.76rem; color: var(--muted); }
+    .stats strong { display: block; font-size: 0.96rem; color: var(--secondary); margin-top: 2px; }
+    .badge-ok { color: #059669 !important; }
 
-    .stats div strong { display: block; font-size: 0.95rem; }
-    .badge-ok { color: var(--success); }
-
-    .trust-note {
-      font-size: 0.78rem;
-      color: var(--muted);
+    /* Trust Features Grid */
+    .section-heading {
       text-align: center;
-      margin-top: 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin: 36px 0 18px;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.03);
+    }
+    .trust-card .t-icon {
+      width: 42px;
+      height: 42px;
+      background: #eff6ff;
+      color: var(--primary);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+    .trust-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .trust-card p { font-size: 0.85rem; color: var(--muted); }
+
+    /* Exam Size Table */
+    .table-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: #f8fafc; font-weight: 700; color: var(--secondary); }
+    tr:last-child td { border-bottom: none; }
+
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: #cbd5e1;
+      padding: 40px 18px 24px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .footer-brand { color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
+    .footer-brand span { color: #60a5fa; }
+    .footer-desc { font-size: 0.85rem; color: #94a3b8; max-width: 340px; }
+    .footer-col h4 { color: #fff; font-size: 0.92rem; margin-bottom: 12px; }
+    .footer-col a {
+      display: block;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 960px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #64748b;
     }
 
-    .faq { font-size: 0.84rem; color: #334155; }
-    .faq h3 { font-size: 0.92rem; margin: 10px 0 4px; color: var(--text); }
+    /* Modal Popup for Legal Pages */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      z-index: 999;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-box {
+      background: #fff;
+      max-width: 520px;
+      width: 100%;
+      border-radius: 16px;
+      padding: 24px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .modal-close { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-weight: 700; }
+    .modal-body { font-size: 0.88rem; color: #334155; line-height: 1.6; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .controls, .action-row, .dop-fields, .footer-inner { grid-template-columns: 1fr; }
+      .tool-card { padding: 18px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Sarkari Form Photo & Sign Resizer</h1>
-    <p>SSC, Railway, Police, UPSC — 2 Second Mein 20KB-50KB Banayein (100% Free)</p>
-  </header>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <div class="brand-icon">⚡</div>
+        FormSize<span>Pro</span>
+      </a>
+      <div class="nav-links">
+        <a href="#tool">Resizer Tool</a>
+        <a href="#features">Why Us</a>
+        <a href="#guide">Exam Size Chart</a>
+      </div>
+      <div class="nav-badge">🔒 100% Private</div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-pill">🇮🇳 Trusted by Students Across India • 100% Free</div>
+    <h1>Sarkari Form <span>Photo & Signature</span> Resizer</h1>
+    <p>SSC, Railway, UPSC, Police aur PAN Card ke liye exact 20KB–50KB photo, signature aur <strong>Name & Date</strong> 2 second mein banayein.</p>
+  </section>
 
   <div class="container">
+    <!-- Top Ad Space -->
+    <div class="ad-slot">Advertisement Space (728×90 Leaderboard)</div>
 
-    <!-- TOP AD SLOT (Baad mein AdSense / Adsterra code yahan paste karna) -->
-    <div class="ad-slot">
-      Advertisement Space (Top Banner)
-    </div>
-
-    <div class="card">
-      <div class="section-title">1. Apna Exam / Type Chunein:</div>
+    <!-- Main Tool -->
+    <div class="tool-card" id="tool">
+      <div class="step-label"><span class="step-num">1</span> Apna Exam / Preset Chunein</div>
       <div class="presets">
         <div class="preset-btn active" onclick="setPreset(this, 350, 450, 40)">
           <strong>SSC / Sarkari Photo</strong>
-          <span>20KB - 50KB (350×450)</span>
+          <span>20KB–50KB • 350×450 px</span>
         </div>
         <div class="preset-btn" onclick="setPreset(this, 400, 200, 15)">
           <strong>Sarkari Signature</strong>
-          <span>10KB - 20KB (400×200)</span>
+          <span>10KB–20KB • 400×200 px</span>
         </div>
         <div class="preset-btn" onclick="setPreset(this, 213, 213, 45)">
           <strong>PAN Card Photo</strong>
-          <span>Under 50KB (213×213)</span>
+          <span>Under 50KB • 213×213 px</span>
         </div>
         <div class="preset-btn" onclick="setPreset(this, 600, 600, 100)">
-          <strong>Custom / Document</strong>
-          <span>Apne Hisab Se Set Karein</span>
+          <strong>Custom Size</strong>
+          <span>Apne hisab se set karein</span>
         </div>
       </div>
 
-      <div class="section-title">2. Photo ya Signature Upload Karein:</div>
-      <label class="upload-box" for="fileInput" id="dropZone">
-        <p id="uploadText">📁 Photo Select Karne Ke Liye Click Karein</p>
-        <small>JPG, PNG, WEBP supported • Photo aapke phone mein hi process hogi</small>
+      <div class="step-label"><span class="step-num">2</span> Photo ya Signature Upload Karein</div>
+      <label class="upload-box" for="fileInput">
+        <span class="upload-icon">📤</span>
+        <p id="uploadText">Photo Select Karne Ke Liye Click Karein</p>
+        <small>JPG, PNG, WEBP • Koi login nahi • Photo aapke device par hi process hogi</small>
         <input type="file" id="fileInput" accept="image/*" />
       </label>
 
@@ -257,42 +522,143 @@
         </div>
       </div>
 
+      <!-- Unique Feature: Name & Date on Photo -->
+      <div class="dop-box">
+        <label class="dop-toggle">
+          <input type="checkbox" id="addDopCheck" onchange="toggleDop()" />
+          ✨ Photo ke neeche Naam aur Date (DOP) likhein (SSC / Police Forms)
+        </label>
+        <div class="dop-fields" id="dopFields">
+          <div class="field">
+            <label>Aapka Naam</label>
+            <input type="text" id="userName" placeholder="e.g. RAHUL KUMAR" />
+          </div>
+          <div class="field">
+            <label>Date of Photo (DOP)</label>
+            <input type="text" id="userDate" placeholder="e.g. 22-11-2026" />
+          </div>
+        </div>
+      </div>
+
       <button class="btn btn-primary" id="resizeBtn" disabled onclick="processImage()">
         ⚡ Resize & Compress Karein
       </button>
 
+      <!-- Result -->
       <div class="result-box" id="resultBox">
-        <div class="section-title">✅ Aapki Photo Ready Hai!</div>
-        <img id="previewImg" class="preview-img" alt="Resized Preview" />
+        <div class="step-label" style="justify-content:center;">✅ Aapki Photo Download Ke Liye Ready Hai!</div>
+        <div class="preview-wrap">
+          <img id="previewImg" class="preview-img" alt="Resized Preview" />
+        </div>
         <div class="stats">
           <div>Original Size <strong id="origSize">-</strong></div>
           <div>New Size <strong id="newSize" class="badge-ok">-</strong></div>
           <div>Dimensions <strong id="newDim">-</strong></div>
         </div>
-        <a id="downloadBtn" class="btn btn-success" download="sarkari-resized.jpg">
-          ⬇️ Download Photo (JPG)
-        </a>
-        <button class="btn btn-whatsapp" onclick="shareWhatsApp()">
-          📲 Doston Ko WhatsApp Par Share Karein
-        </button>
+        <div class="action-row">
+          <a id="downloadBtn" class="btn btn-success" download="sarkari-photo.jpg">⬇️ Download JPG</a>
+          <button class="btn btn-whatsapp" onclick="shareWhatsApp()">📲 Share on WhatsApp</button>
+        </div>
       </div>
-
-      <p class="trust-note">🔒 100% Safe: Aapki photo kisi server par upload nahi hoti.</p>
     </div>
 
-    <!-- BOTTOM AD SLOT -->
-    <div class="ad-slot">
-      Advertisement Space (Bottom Banner)
+    <!-- Middle Ad Space -->
+    <div class="ad-slot">Advertisement Space (Responsive Banner)</div>
+
+    <!-- Trust Section -->
+    <h2 class="section-heading" id="features">Students FormSize Pro Par Bharosa Kyun Karte Hain?</h2>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="t-icon">🔒</div>
+        <h3>100% Safe & Private</h3>
+        <p>Aapki photo ya signature hamare server par upload nahi hota. Sab kuch aapke phone/laptop ke browser mein hi hota hai.</p>
+      </div>
+      <div class="trust-card">
+        <div class="t-icon">⚡</div>
+        <h3>Exact KB Technology</h3>
+        <p>Smart compression engine jo photo ki quality kharab kiye bina exact 20KB–50KB ya 10KB–20KB size set karta hai.</p>
+      </div>
+      <div class="trust-card">
+        <div class="t-icon">📝</div>
+        <h3>In-Built Name & Date</h3>
+        <p>Alag se Photoshop ya app ki zaroorat nahi—ek click mein photo ke neeche safed patti par apna naam aur date likhein.</p>
+      </div>
     </div>
 
-    <div class="card faq">
-      <div class="section-title">Sarkari Form Photo Size Guide</div>
-      <h3>• SSC CGL / CHSL / GD / MTS:</h3>
-      <p>Photo size 20KB se 50KB (3.5cm × 4.5cm) aur Signature 10KB se 20KB hona chahiye.</p>
-      <h3>• Railway (RRB) & Police Bharti:</h3>
-      <p>Aam taur par Photo 20KB–50KB aur Signature 10KB–40KB JPG format mein maanga jata hai.</p>
+    <!-- Exam Size Chart -->
+    <h2 class="section-heading" id="guide">Sarkari Exam Photo & Signature Size Chart (2026)</h2>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Exam / Portal</th>
+            <th>Photo Size</th>
+            <th>Signature Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SSC (CGL, CHSL, GD, MTS)</strong></td>
+            <td>20 KB – 50 KB (3.5×4.5 cm)</td>
+            <td>10 KB – 20 KB (4.0×2.0 cm)</td>
+          </tr>
+          <tr>
+            <td><strong>Railway (RRB NTPC, Group D)</strong></td>
+            <td>20 KB – 50 KB (JPG)</td>
+            <td>10 KB – 40 KB (JPG)</td>
+          </tr>
+          <tr>
+            <td><strong>UPSC / State PCS</strong></td>
+            <td>20 KB – 300 KB (350×350 px)</td>
+            <td>20 KB – 300 KB (JPG)</td>
+          </tr>
+          <tr>
+            <td><strong>NSDL / UTI PAN Card</strong></td>
+            <td>Under 50 KB (213×213 px)</td>
+            <td>Under 50 KB (400×200 px)</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 
+  <!-- Professional Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">FormSize<span>Pro</span></div>
+        <p class="footer-desc">India ka fast, free aur 100% private online tool — sarkari exam forms ke liye photo, signature aur documents ko seconds mein resize karne ke liye.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Tools</h4>
+        <a href="#tool">SSC Photo Resizer</a>
+        <a href="#tool">Signature Resizer</a>
+        <a href="#tool">PAN Card Photo Tool</a>
+        <a href="#guide">Exam Size Chart</a>
+      </div>
+      <div class="footer-col">
+        <h4>Trust & Legal</h4>
+        <a onclick="openModal('privacy')">Privacy Policy</a>
+        <a onclick="openModal('terms')">Terms of Use</a>
+        <a onclick="openModal('disclaimer')">Disclaimer</a>
+        <a onclick="openModal('about')">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FormSize Pro. All rights reserved.</span>
+      <span>Made with ❤️ in India • 100% Client-Side Processing</span>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-bg" id="modalBg" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <h3 id="modalTitle">Title</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
   </div>
 
   <canvas id="canvas" style="display:none;"></canvas>
@@ -312,6 +678,11 @@
       document.getElementById('imgWidth').value = w;
       document.getElementById('imgHeight').value = h;
       document.getElementById('targetKB').value = kb;
+    }
+
+    function toggleDop() {
+      const checked = document.getElementById('addDopCheck').checked;
+      document.getElementById('dopFields').style.display = checked ? 'grid' : 'none';
     }
 
     fileInput.addEventListener('change', function(e) {
@@ -334,8 +705,7 @@
 
     function dataURLSizeKB(dataURL) {
       const base64Length = dataURL.length - (dataURL.indexOf(',') + 1);
-      const bytes = (base64Length * 3) / 4;
-      return bytes / 1024;
+      return ((base64Length * 3) / 4) / 1024;
     }
 
     function processImage() {
@@ -344,22 +714,40 @@
       const targetKB = parseFloat(document.getElementById('targetKB').value) || 40;
       let width = parseInt(document.getElementById('imgWidth').value) || 350;
       let height = parseInt(document.getElementById('imgHeight').value) || 450;
+      const addDop = document.getElementById('addDopCheck').checked;
+      const uName = document.getElementById('userName').value.trim().toUpperCase();
+      const uDate = document.getElementById('userDate').value.trim();
 
       const canvas = document.getElementById('canvas');
       const ctx = canvas.getContext('2d');
-
       let bestDataUrl = '';
       let scale = 1.0;
 
-      // Try hitting exact target KB using binary search on JPEG quality
       for (let attempt = 0; attempt < 5; attempt++) {
         canvas.width = Math.round(width * scale);
         canvas.height = Math.round(height * scale);
 
-        // White background so transparent PNG signatures don't turn black
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+        const stripH = (addDop && (uName || uDate)) ? Math.round(canvas.height * 0.16) : 0;
+        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height - stripH);
+
+        if (stripH > 0) {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, canvas.height - stripH, canvas.width, stripH);
+          ctx.fillStyle = '#000000';
+          ctx.textAlign = 'center';
+          const fontSize = Math.max(10, Math.round(stripH * 0.34));
+          ctx.font = `700 ${fontSize}px Arial, sans-serif`;
+
+          if (uName && uDate) {
+            ctx.fillText(uName, canvas.width / 2, canvas.height - stripH + fontSize * 1.15);
+            ctx.fillText('DOP: ' + uDate, canvas.width / 2, canvas.height - stripH + fontSize * 2.35);
+          } else {
+            ctx.fillText(uName || ('DOP: ' + uDate), canvas.width / 2, canvas.height - stripH / 2 + fontSize / 3);
+          }
+        }
 
         let minQ = 0.05, maxQ = 0.98;
         bestDataUrl = canvas.toDataURL('image/jpeg', 0.8);
@@ -367,9 +755,7 @@
         for (let i = 0; i < 10; i++) {
           let midQ = (minQ + maxQ) / 2;
           let testUrl = canvas.toDataURL('image/jpeg', midQ);
-          let sizeKB = dataURLSizeKB(testUrl);
-
-          if (sizeKB <= targetKB) {
+          if (dataURLSizeKB(testUrl) <= targetKB) {
             bestDataUrl = testUrl;
             minQ = midQ;
           } else {
@@ -378,7 +764,7 @@
         }
 
         if (dataURLSizeKB(bestDataUrl) <= targetKB) break;
-        scale *= 0.85; // Reduce dimensions slightly if still above target KB
+        scale *= 0.85;
       }
 
       const finalKB = dataURLSizeKB(bestDataUrl).toFixed(1);
@@ -391,7 +777,7 @@
 
       const downloadBtn = document.getElementById('downloadBtn');
       downloadBtn.href = bestDataUrl;
-      downloadBtn.download = 'sarkari-' + Math.round(finalKB) + 'kb.jpg';
+      downloadBtn.download = 'formsize-' + Math.round(finalKB) + 'kb.jpg';
 
       resultBox.style.display = 'block';
       resultBox.scrollIntoView({ behavior: 'smooth' });
@@ -399,8 +785,36 @@
 
     function shareWhatsApp() {
       const url = window.location.href;
-      const text = `Sarkari Form (SSC/Railway/Police) ke liye Photo 20KB-50KB aur Signature 2 second mein FREE resize karo yahan se: ${url}`;
+      const text = `Sarkari Form (SSC/Railway/Police) ke liye Photo (20KB-50KB), Signature aur Photo par Name & Date 2 second mein FREE banayein: ${url}`;
       window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    const legalContent = {
+      privacy: {
+        title: 'Privacy Policy',
+        body: 'FormSize Pro respects your privacy. All image resizing, compression, and text editing happen 100% locally inside your web browser. We do not upload, store, or share your personal photos or signatures on any external server.'
+      },
+      terms: {
+        title: 'Terms of Use',
+        body: 'This tool is provided completely free of cost for educational and form-filling convenience. Users are advised to double-check the final photo dimensions and KB size against their official exam notification before uploading.'
+      },
+      disclaimer: {
+        title: 'Disclaimer',
+        body: 'FormSize Pro is an independent utility website and is not affiliated with SSC, UPSC, RRB, NSDL, or any government organization. All exam names are used purely for informational guidance.'
+      },
+      about: {
+        title: 'About FormSize Pro',
+        body: 'FormSize Pro was built to help Indian students and job aspirants easily prepare exam-ready photos and signatures without needing expensive software or cyber cafes.'
+      }
+    };
+
+    function openModal(type) {
+      document.getElementById('modalTitle').textContent = legalContent[type].title;
+      document.getElementById('modalBody').textContent = legalContent[type].body;
+      document.getElementById('modalBg').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('modalBg').style.display = 'none';
     }
   </script>
 </body>
